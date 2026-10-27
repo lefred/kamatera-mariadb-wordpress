@@ -1,0 +1,21 @@
+datacenter_country = "Germany"
+datacenter_name = "Frankfurt"
+server_name = "wordpress"
+ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+ssh_cidr = "203.0.113.42/32" # REPLACE with your current public IP
+
+# false = 1 VM; true = web VM + MariaDB VM + private LAN
+split_database = true
+web_cpu_cores = 1
+web_ram_mb = 2048
+web_disk_gb = 20
+# Used only when split_database = true
+db_cpu_cores = 1
+db_ram_mb = 2048
+db_disk_gb = 20
+private_subnet = "10.77.40.0/24"
+web_private_ip = "10.77.40.10"
+db_private_ip = "10.77.40.11"
+
+# Monthly traffic package in Frankfurt (EU-FR): t5000 or b50
+monthly_traffic_package = "t5000"
