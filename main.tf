@@ -27,7 +27,7 @@ resource "random_password" "wordpress_db" {
 resource "kamatera_network" "database" {
   count         = var.split_database ? 1 : 0
   datacenter_id = data.kamatera_datacenter.selected.id
-  name          = "wordpress-private"
+  name          = "${var.server_name}-private"
   subnet {
     ip  = cidrhost(var.private_subnet, 0)
     bit = tonumber(split("/", var.private_subnet)[1])
@@ -66,7 +66,7 @@ resource "kamatera_server" "web" {
 
 resource "kamatera_server" "database" {
   count                   = var.split_database ? 1 : 0
-  name                    = "wordpress-db"
+  name                    = "${var.server_name}-db"
   datacenter_id           = data.kamatera_datacenter.selected.id
   image_id                = data.kamatera_image.ubuntu.id
   cpu_type                = "B"
